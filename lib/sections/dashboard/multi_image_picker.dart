@@ -1,4 +1,5 @@
 import 'package:cas_house/api_service.dart';
+import 'package:cas_house/main_global.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
@@ -32,6 +33,8 @@ class MultiImagePickerExampleState extends State<MultiImagePickerExample> {
       );
       request.files
           .add(await http.MultipartFile.fromPath('images', image.path));
+      request.fields['username'] = loggedUser!.username;
+
       var response = await request.send();
 
       if (response.statusCode == 200) {
