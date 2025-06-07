@@ -1,5 +1,6 @@
 import 'package:cas_house/main_global.dart';
 import 'package:cas_house/providers/dasboard_provider.dart';
+import 'package:cas_house/providers/image_provider.dart';
 import 'package:cas_house/providers/payment_provider.dart';
 import 'package:cas_house/providers/properties_provider.dart';
 import 'package:cas_house/providers/defects_provider.dart';
@@ -10,6 +11,8 @@ import 'package:cas_house/sections/dashboard/dashboard_main.dart';
 import 'package:cas_house/sections/login.dart';
 import 'package:cas_house/sections/defects/shopping_list_main.dart';
 import 'package:cas_house/sections/user/user_main.dart';
+import 'package:cas_house/sections/user_images/user_images_main.dart';
+import 'package:cas_house/services/image_services.dart';
 import 'package:provider/provider.dart';
 import 'package:cas_house/nav_bar/nav_bar_main.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +31,7 @@ void main() async {
         ChangeNotifierProvider(create: (_) => UserProvider(prefs)),
         ChangeNotifierProvider(create: (_) => DefectsProvider()),
         ChangeNotifierProvider(create: (_) => PaymentProvider()),
+        ChangeNotifierProvider(create: (_) => ImagesProvider(imageService: ImageServices())),
       ],
       child: const MyApp(),
     ),
@@ -93,8 +97,10 @@ class HelloButtonState extends State<HelloButton> {
         return const ShoppingMain();
       case MainViews.user:
         return const UserSectionMain();
+        //TODO change payment -> userImages
       case MainViews.payment:
-        return const PaymentMain();
+        return const UserImagesMain();
+        // return const PaymentMain();
     }
   }
 }
