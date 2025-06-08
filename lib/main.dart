@@ -1,10 +1,12 @@
 import 'package:cas_house/main_global.dart';
 import 'package:cas_house/providers/dasboard_provider.dart';
+import 'package:cas_house/providers/feed_provider.dart';
 import 'package:cas_house/providers/image_provider.dart';
 import 'package:cas_house/providers/payment_provider.dart';
 import 'package:cas_house/providers/properties_provider.dart';
 import 'package:cas_house/providers/defects_provider.dart';
 import 'package:cas_house/providers/user_provider.dart';
+import 'package:cas_house/sections/feed/feed_main.dart';
 import 'package:cas_house/sections/payment/payment_main.dart';
 import 'package:cas_house/sections/properties/properties_main.dart';
 import 'package:cas_house/sections/dashboard/dashboard_main.dart';
@@ -32,6 +34,7 @@ void main() async {
         ChangeNotifierProvider(create: (_) => DefectsProvider()),
         ChangeNotifierProvider(create: (_) => PaymentProvider()),
         ChangeNotifierProvider(create: (_) => ImagesProvider(imageService: ImageServices())),
+        ChangeNotifierProvider(create: (_) => FeedProvider(imageService: ImageServices())),
       ],
       child: const MyApp(),
     ),
@@ -91,8 +94,10 @@ class HelloButtonState extends State<HelloButton> {
     switch (currentSite.value) {
       case MainViews.dashboard:
         return const HomeSectionMain();
+        //TODO change properties -> feed
       case MainViews.properties:
-        return const ExpensesSectionMain();
+        return const FeedMain();
+        // return const ExpensesSectionMain();
       case MainViews.defects:
         return const ShoppingMain();
       case MainViews.user:
