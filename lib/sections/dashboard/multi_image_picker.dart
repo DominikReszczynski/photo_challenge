@@ -1,9 +1,12 @@
 import 'package:cas_house/api_service.dart';
 import 'package:cas_house/main_global.dart';
+import 'package:cas_house/models/challenge.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:http/http.dart' as http;
+
+import 'challenge_picker_widget.dart';
 
 class MultiImagePickerExample extends StatefulWidget {
   const MultiImagePickerExample({super.key});
@@ -15,6 +18,7 @@ class MultiImagePickerExample extends StatefulWidget {
 class MultiImagePickerExampleState extends State<MultiImagePickerExample> {
   final ImagePicker _picker = ImagePicker();
   List<XFile> _images = [];
+  Challenge? _challenge;
 
   Future<void> _pickImages() async {
     final List<XFile> selectedImages = await _picker.pickMultiImage();
@@ -34,11 +38,16 @@ class MultiImagePickerExampleState extends State<MultiImagePickerExample> {
       request.files
           .add(await http.MultipartFile.fromPath('images', image.path));
       request.fields['username'] = loggedUser!.username;
+      request.fields['challengeId'] = _challenge!.id;
 
       var response = await request.send();
 
       if (response.statusCode == 200) {
         print("Upload ok");
+        setState(() {
+          _images = [];
+          _challenge = null;
+        });
       } else {
         print("Upload fail: ${response.statusCode}");
       }
@@ -53,8 +62,15 @@ class MultiImagePickerExampleState extends State<MultiImagePickerExample> {
           onPressed: _pickImages,
           child: const Text("Wybierz zdjęcia"),
         ),
+        ChallengePickerButton(onChallengeSelected: (challengeSelected) {
+          print("Selected challenge: ${challengeSelected.title}");
+          setState(() {
+            _challenge = challengeSelected;
+          });
+        },
+        ),
         ElevatedButton(
-          onPressed: _uploadImages,
+          onPressed: _images.isNotEmpty && null !=_challenge ? _uploadImages : null,
           child: const Text("Wyślij zdjęcia"),
         ),
         _images.isNotEmpty
