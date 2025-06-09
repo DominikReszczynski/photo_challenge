@@ -46,7 +46,7 @@ class _FeedMainState extends State<FeedMain> {
   }
 
   Future<void> _refresh() async {
-    await Provider.of<ImagesProvider>(context, listen: false).refreshImages();
+    await Provider.of<FeedProvider>(context, listen: false).refreshImages();
   }
 
   @override
