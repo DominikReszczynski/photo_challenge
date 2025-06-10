@@ -59,7 +59,7 @@ class FeedProvider with ChangeNotifier {
       image.likedBy.remove(username);
       image.likes--;
       try {
-        await imageService.unlike(image.filename);
+        await imageService.unlike(image.fileName);
       } catch (e) {
         print('Error toggling like: $e');
       }
@@ -67,7 +67,7 @@ class FeedProvider with ChangeNotifier {
       image.likedBy.add(username);
       image.likes++;
       try {
-        await imageService.like(image.filename);
+        await imageService.like(image.fileName);
       } catch (e) {
         print('Error toggling like: $e');
       }

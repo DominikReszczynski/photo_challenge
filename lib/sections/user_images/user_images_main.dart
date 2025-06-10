@@ -74,7 +74,7 @@ class _UserImagesMainState extends State<UserImagesMain> {
                     child: Column(
                       children: [
                         CachedNetworkImage(
-                          imageUrl: '${ApiService.baseUrl}/images/file/${image.filename}',
+                          imageUrl: '${ApiService.baseUrl}/images/file/${image.fileName}',
                           placeholder: (context, url) => const CircularProgressIndicator(),
                           errorWidget: (context, url, error) => const Icon(Icons.error),
                           fit: BoxFit.fitWidth,

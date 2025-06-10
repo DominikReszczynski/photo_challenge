@@ -74,7 +74,7 @@ class _FeedMainState extends State<FeedMain> {
                     child: Column(
                       children: [
                         CachedNetworkImage(
-                          imageUrl: '${ApiService.baseUrl}/images/file/${image.filename}',
+                          imageUrl: '${ApiService.baseUrl}/images/file/${image.fileName}',
                           placeholder: (context, url) => const CircularProgressIndicator(),
                           errorWidget: (context, url, error) => const Icon(Icons.error),
                           fit: BoxFit.fitWidth,
@@ -140,10 +140,10 @@ class _FeedMainState extends State<FeedMain> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text('Comments for ${image.filename}',
+              Text('Comments for ${image.fileName}',
                   style: const TextStyle(fontWeight: FontWeight.bold)),
               const SizedBox(height: 10),
-              ...image.comments.map((comment) => ListTile(title: Text(comment as String))),
+              ...image.comments.map((comment) => ListTile(title: Text(comment.content))),
             ],
           ),
         );

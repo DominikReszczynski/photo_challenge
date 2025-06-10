@@ -8,7 +8,7 @@ class ImageModel {
   final String challengeId;
   @JsonKey(defaultValue: [])
   final List<String> tags;
-  final String filename;
+  final String fileName;
   @JsonKey(defaultValue: 0)
   late int likes;
   @JsonKey(defaultValue: [])
@@ -21,7 +21,7 @@ class ImageModel {
   ImageModel({
     required this.challengeId,
     required this.tags,
-    required this.filename,
+    required this.fileName,
     required this.likes,
     required this.likedBy,
     required this.comments,
@@ -36,13 +36,13 @@ class ImageModel {
 
 @JsonSerializable()
 class Comment {
-  final String text;
-  final String user;
+  final String content;
+  final String userName;
   final String createdAt;
 
   Comment({
-    required this.text,
-    required this.user,
+    required this.content,
+    required this.userName,
     required this.createdAt,
   });
 

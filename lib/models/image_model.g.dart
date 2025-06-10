@@ -11,7 +11,7 @@ ImageModel _$ImageModelFromJson(Map<String, dynamic> json) => ImageModel(
       tags:
           (json['tags'] as List<dynamic>?)?.map((e) => e as String).toList() ??
               [],
-      filename: json['filename'] as String,
+      fileName: json['fileName'] as String,
       likes: (json['likes'] as num?)?.toInt() ?? 0,
       likedBy: (json['likedBy'] as List<dynamic>?)
               ?.map((e) => e as String)
@@ -29,7 +29,7 @@ Map<String, dynamic> _$ImageModelToJson(ImageModel instance) =>
     <String, dynamic>{
       'challengeId': instance.challengeId,
       'tags': instance.tags,
-      'filename': instance.filename,
+      'fileName': instance.fileName,
       'likes': instance.likes,
       'likedBy': instance.likedBy,
       'comments': instance.comments.map((e) => e.toJson()).toList(),
@@ -38,13 +38,13 @@ Map<String, dynamic> _$ImageModelToJson(ImageModel instance) =>
     };
 
 Comment _$CommentFromJson(Map<String, dynamic> json) => Comment(
-      text: json['text'] as String,
-      user: json['user'] as String,
+      content: json['content'] as String,
+      userName: json['userName'] as String,
       createdAt: json['createdAt'] as String,
     );
 
 Map<String, dynamic> _$CommentToJson(Comment instance) => <String, dynamic>{
-      'text': instance.text,
-      'user': instance.user,
+      'content': instance.content,
+      'userName': instance.userName,
       'createdAt': instance.createdAt,
     };
