@@ -11,7 +11,7 @@ class DashboardServices {
     final prefs = await SharedPreferences.getInstance();
     final storedUserId = prefs.getString('userId');
     print('DashboardServices');
-    Map<String, dynamic> body = {'userID': storedUserId};
+    Map<String, dynamic> body = {'userName': storedUserId};
     print(_urlPrefix);
     final http.Response res = await http.post(
       Uri.parse('$_urlPrefix/dashboard/chat'),

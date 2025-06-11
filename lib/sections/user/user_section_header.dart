@@ -4,7 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class UserSectionHeader extends StatefulWidget {
-  const UserSectionHeader({super.key});
+  final VoidCallback onLogout;
+
+  const UserSectionHeader({
+    super.key,
+    required this.onLogout
+  });
 
   @override
   State<UserSectionHeader> createState() => _UserSectionHeaderState();
@@ -26,14 +31,6 @@ class _UserSectionHeaderState extends State<UserSectionHeader> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          MdiIcons.bookEdit,
-                          color: chosenMode.value == ThemeMode.dark
-                              ? Colors.white
-                              : Colors.black,
-                        )),
-                    IconButton(
                         onPressed: () {
                           chosenMode.value = chosenMode.value == ThemeMode.light
                               ? ThemeMode.dark
@@ -44,7 +41,15 @@ class _UserSectionHeaderState extends State<UserSectionHeader> {
                           color: chosenMode.value == ThemeMode.dark
                               ? Colors.white
                               : Colors.black,
-                        ))
+                        )),
+                    IconButton(
+                        onPressed: widget.onLogout,
+                        icon: Icon(
+                          MdiIcons.logout,
+                          color: chosenMode.value == ThemeMode.dark
+                              ? Colors.white
+                              : Colors.black,
+                        )),
                   ],
                 );
               }),

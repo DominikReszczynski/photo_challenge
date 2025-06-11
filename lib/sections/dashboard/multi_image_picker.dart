@@ -37,7 +37,7 @@ class MultiImagePickerExampleState extends State<MultiImagePickerExample> {
       );
       request.files
           .add(await http.MultipartFile.fromPath('images', image.path));
-      request.fields['username'] = loggedUser!.username;
+      request.fields['userName'] = loggedUser!.username;
       request.fields['challengeId'] = _challenge!.id;
 
       var response = await request.send();
