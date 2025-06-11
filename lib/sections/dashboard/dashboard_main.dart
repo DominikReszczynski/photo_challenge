@@ -19,7 +19,7 @@ class _HomeSectionMainState extends State<HomeSectionMain>
     with SingleTickerProviderStateMixin {
   late DashboardProvider dashboardProvider;
 
-  @override
+
   @override
   Widget build(BuildContext context) {
     return AnimatedBackground(
@@ -30,7 +30,7 @@ class _HomeSectionMainState extends State<HomeSectionMain>
             itemCount: _buildChildren().length,
             itemBuilder: (context, index) => _buildChildren()[index],
             separatorBuilder: (_, __) => const SizedBox(
-              height: 10,
+              height: 20,
             ),
           ),
         ),
@@ -42,37 +42,47 @@ class _HomeSectionMainState extends State<HomeSectionMain>
   List<Widget> _buildChildren() {
     return [
       // Logo
-      Center(
-        child: Image.asset(
-          'assets/images/livo_logo.webp',
-          height: 50,
-        ),
-      ),
-
-      // Powitanie
-      const Padding(
-        padding: EdgeInsets.only(top: 10),
-        child: AutoSizeText(
-          "Hi, Dominik",
-          style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700),
-        ),
+      const Center(
+        child:
+        // Image.asset(
+        //   'assets/images/livo_logo.webp',
+        //   height: 50,
+        // ),
+        Text(
+          "Photo\nChallenge",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 36,
+            fontWeight: FontWeight.bold,
+            color: Colors.black54,
+            height: 1.2,
+            letterSpacing: 1.5,
+            shadows: [
+              Shadow(
+                offset: Offset(2, 2),
+                blurRadius: 4,
+                color: Colors.black45,
+              ),
+            ],
+          ),
+        )
       ),
 
       // MultiImagePicker
       const MultiImagePickerExample(),
 
       // SingleImageUploader
-      SingleImageUploader(
-        onImageSelected: (File file) {/* … */},
-      ),
+      // SingleImageUploader(
+      //   onImageSelected: (File file) {/* … */},
+      // ),
 
       // Lista zdalnych obrazków
-      const RemoteImageList(
-        filenames: [
-          '42d068d4-6994-4bd1-881a-c18cdb7eb33e.jpg',
-          '1743413813108.jpg',
-        ],
-      ),
+      // const RemoteImageList(
+      //   filenames: [
+      //     '42d068d4-6994-4bd1-881a-c18cdb7eb33e.jpg',
+      //     '1743413813108.jpg',
+      //   ],
+      // ),
     ];
   }
 }

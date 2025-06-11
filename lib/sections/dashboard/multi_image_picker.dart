@@ -62,6 +62,7 @@ class MultiImagePickerExampleState extends State<MultiImagePickerExample> {
           onPressed: _pickImages,
           child: const Text("Wybierz zdjęcia"),
         ),
+        const SizedBox(height: 10),
         ChallengePickerButton(onChallengeSelected: (challengeSelected) {
           print("Selected challenge: ${challengeSelected.title}");
           setState(() {
@@ -69,6 +70,7 @@ class MultiImagePickerExampleState extends State<MultiImagePickerExample> {
           });
         },
         ),
+        const SizedBox(height: 10),
         ElevatedButton(
           onPressed: _images.isNotEmpty && null !=_challenge ? _uploadImages : null,
           child: const Text("Wyślij zdjęcia"),
