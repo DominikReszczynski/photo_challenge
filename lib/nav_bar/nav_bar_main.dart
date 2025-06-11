@@ -28,31 +28,17 @@ class _NavBarMainState extends State<NavBarMain> {
       items: [
         BottomNavigationBarItem(
           icon: Icon(
-            MdiIcons.viewDashboard,
+            MdiIcons.rss,
             size: 35,
           ),
-          label: 'Dashboard',
+          label: 'Feed',
         ),
         BottomNavigationBarItem(
           icon: Icon(
-            MdiIcons.home,
+            MdiIcons.plusCircleOutline,
             size: 35,
           ),
-          label: 'Properties',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(
-            MdiIcons.bug,
-            size: 35,
-          ),
-          label: 'Defects',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(
-            MdiIcons.creditCard,
-            size: 35,
-          ),
-          label: 'Payment',
+          label: 'Add',
         ),
         BottomNavigationBarItem(
           icon: Icon(
@@ -74,16 +60,12 @@ class _NavBarMainState extends State<NavBarMain> {
   // Maps the MainViews enum to the corresponding BottomNavigationBar index.
   int _mapEnumToIndex(MainViews view) {
     switch (view) {
-      case MainViews.dashboard:
+      case MainViews.feed:
         return 0;
-      case MainViews.properties:
+      case MainViews.add:
         return 1;
-      case MainViews.defects:
-        return 2;
-      case MainViews.payment:
-        return 3;
       case MainViews.user:
-        return 4;
+        return 2;
     }
   }
 
@@ -91,17 +73,13 @@ class _NavBarMainState extends State<NavBarMain> {
   MainViews _mapIndexToEnum(int index) {
     switch (index) {
       case 0:
-        return MainViews.dashboard;
+        return MainViews.feed;
       case 1:
-        return MainViews.properties;
+        return MainViews.add;
       case 2:
-        return MainViews.defects;
-      case 3:
-        return MainViews.payment;
-      case 4:
         return MainViews.user;
       default:
-        return MainViews.dashboard;
+        return MainViews.feed;
     }
   }
 }
