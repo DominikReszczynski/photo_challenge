@@ -33,8 +33,10 @@ void main() async {
         ChangeNotifierProvider(create: (_) => UserProvider(prefs)),
         ChangeNotifierProvider(create: (_) => DefectsProvider()),
         ChangeNotifierProvider(create: (_) => PaymentProvider()),
-        ChangeNotifierProvider(create: (_) => ImagesProvider(imageService: ImageServices())),
-        ChangeNotifierProvider(create: (_) => FeedProvider(imageService: ImageServices())),
+        ChangeNotifierProvider(
+            create: (_) => ImagesProvider(imageService: ImageServices())),
+        ChangeNotifierProvider(
+            create: (_) => FeedProvider(imageService: ImageServices())),
       ],
       child: const MyApp(),
     ),
