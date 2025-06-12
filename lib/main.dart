@@ -33,8 +33,10 @@ void main() async {
         ChangeNotifierProvider(create: (_) => UserProvider(prefs)),
         ChangeNotifierProvider(create: (_) => DefectsProvider()),
         ChangeNotifierProvider(create: (_) => PaymentProvider()),
-        ChangeNotifierProvider(create: (_) => ImagesProvider(imageService: ImageServices())),
-        ChangeNotifierProvider(create: (_) => FeedProvider(imageService: ImageServices())),
+        ChangeNotifierProvider(
+            create: (_) => ImagesProvider(imageService: ImageServices())),
+        ChangeNotifierProvider(
+            create: (_) => FeedProvider(imageService: ImageServices())),
       ],
       child: const MyApp(),
     ),
@@ -92,20 +94,12 @@ class HelloButtonState extends State<HelloButton> {
 
   Widget _buildBody() {
     switch (currentSite.value) {
-      case MainViews.dashboard:
-        return const HomeSectionMain();
-        //TODO change properties -> feed
-      case MainViews.properties:
+      case MainViews.feed:
         return const FeedMain();
-        // return const ExpensesSectionMain();
-      case MainViews.defects:
-        return const ShoppingMain();
+      case MainViews.add:
+        return const HomeSectionMain();
       case MainViews.user:
         return const UserSectionMain();
-        //TODO change payment -> userImages
-      case MainViews.payment:
-        return const UserImagesMain();
-        // return const PaymentMain();
     }
   }
 }
