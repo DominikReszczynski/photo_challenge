@@ -1,6 +1,4 @@
 import 'package:cas_house/api_service.dart';
-import 'package:cas_house/main_global.dart';
-import 'package:cas_house/providers/image_provider.dart';
 import 'package:cas_house/widgets/animated_background.dart';
 import 'package:cas_house/widgets/like_button.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +7,6 @@ import 'package:provider/provider.dart';
 
 import '../../models/image_model.dart';
 import '../../providers/feed_provider.dart';
-import '../../services/image_services.dart';
 import '../../widgets/info_box.dart';
 
 class FeedMain extends StatefulWidget {

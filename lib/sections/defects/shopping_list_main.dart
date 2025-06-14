@@ -1,4 +1,3 @@
-import 'package:cas_house/providers/defects_provider.dart';
 import 'package:cas_house/providers/properties_provider.dart';
 import 'package:cas_house/sections/properties/add_new_property.dart';
 import 'package:cas_house/sections/properties/property_tile.dart';

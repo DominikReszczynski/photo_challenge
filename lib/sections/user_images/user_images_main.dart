@@ -1,13 +1,10 @@
 import 'package:cas_house/api_service.dart';
-import 'package:cas_house/main_global.dart';
 import 'package:cas_house/providers/image_provider.dart';
 import 'package:cas_house/widgets/animated_background.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:provider/provider.dart';
 
-import '../../models/image_model.dart';
-import '../../services/image_services.dart';
 
 class UserImagesMain extends StatefulWidget {
 

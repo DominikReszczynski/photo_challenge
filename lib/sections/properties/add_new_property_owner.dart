@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:cas_house/main_global.dart';
 import 'package:cas_house/models/properties.dart';
 import 'package:cas_house/sections/dashboard/image_picker.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +36,7 @@ class _AddNewPropertyOwnerState extends State<AddNewPropertyOwner> {
   DateTime? _rentalStart;
   DateTime? _rentalEnd;
 
-  List<String> _features = [];
+  final List<String> _features = [];
 
   void _submitForm() async {
     if (_formKey.currentState!.validate()) {

@@ -131,7 +131,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     setState(() {
       _isLoading = false;
     });
-    print('czy jest success ' + success.toString());
+    print('czy jest success $success');
     if (success) {
       Navigator.pop(context);
     } else {

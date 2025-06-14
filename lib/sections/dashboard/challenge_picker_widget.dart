@@ -1,5 +1,4 @@
 import 'package:cas_house/api_service.dart';
-import 'package:cas_house/main_global.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -10,9 +9,9 @@ class ChallengePickerButton extends StatefulWidget {
   final Function(Challenge) onChallengeSelected;
 
   const ChallengePickerButton({
-    Key? key,
+    super.key,
     required this.onChallengeSelected,
-  }) : super(key: key);
+  });
 
   @override
   State<ChallengePickerButton> createState() => _ChallengePickerButtonState();
