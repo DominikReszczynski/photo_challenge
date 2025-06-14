@@ -138,7 +138,6 @@ class _FeedMainState extends State<FeedMain> {
                                           .toggleLike(image);
                                     },
                                   ),
-                                  // Statyczny licznik czasu
                                   Container(
                                     margin: const EdgeInsets.symmetric(
                                         horizontal: 8),
@@ -148,14 +147,14 @@ class _FeedMainState extends State<FeedMain> {
                                       color: Colors.brown[50],
                                       borderRadius: BorderRadius.circular(8),
                                     ),
-                                    child: Row(
+                                    child: const Row(
                                       children: [
-                                        const Icon(Icons.timer,
+                                        Icon(Icons.timer,
                                             size: 18, color: Color(0xFF926C20)),
-                                        const SizedBox(width: 4),
+                                        SizedBox(width: 4),
                                         Text(
-                                          "23:59:59", // statyczny licznik czasu
-                                          style: const TextStyle(
+                                          "23:59:59", 
+                                          style: TextStyle(
                                             fontWeight: FontWeight.w500,
                                             color: Color(0xFF926C20),
                                             fontSize: 13,
