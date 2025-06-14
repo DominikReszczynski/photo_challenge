@@ -196,7 +196,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // Możesz dodać tło jak w loginie, np. przez Stack i Image.asset jeśli masz obrazek
+      appBar: AppBar(title: const Text('Rejestracja')),
       body: Stack(
         children: [
           Center(
@@ -205,7 +205,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 margin: const EdgeInsets.symmetric(horizontal: 24),
                 padding: const EdgeInsets.all(32),
                 decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.85),
+                  color: Colors.white.withValues(alpha: 0.85),
                   borderRadius: BorderRadius.circular(24),
                   boxShadow: const [
                     BoxShadow(
