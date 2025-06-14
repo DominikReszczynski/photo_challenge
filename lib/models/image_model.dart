@@ -1,3 +1,4 @@
+import 'package:cas_house/main_global.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'image_model.g.dart';
@@ -30,6 +31,8 @@ class ImageModel {
   });
 
   factory ImageModel.fromJson(Map<String, dynamic> json) => _$ImageModelFromJson(json);
+
+  get isLiked => likedBy.contains(loggedUser!.username);
 
   Map<String, dynamic> toJson() => _$ImageModelToJson(this);
 }

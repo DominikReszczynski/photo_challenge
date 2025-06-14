@@ -80,13 +80,6 @@ class _UserImagesMainState extends State<UserImagesMain> {
                           fit: BoxFit.fitWidth,
                           width: MediaQuery.of(context).size.width * 0.8,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            "Uploaded: ${image.uploadedAt}",
-                            style: const TextStyle(fontSize: 12, color: Colors.grey),
-                          ),
-                        ),
                       ],
                     ),
                   );

@@ -2,6 +2,7 @@ import 'package:cas_house/api_service.dart';
 import 'package:cas_house/main_global.dart';
 import 'package:cas_house/providers/image_provider.dart';
 import 'package:cas_house/widgets/animated_background.dart';
+import 'package:cas_house/widgets/like_button.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:provider/provider.dart';
@@ -85,14 +86,27 @@ class _FeedMainState extends State<FeedMain> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              InfoBox(
-                                icon: Icons.person,
-                                label: image.userName ?? "unknown",
-                                onTap: null,
+                              Row(
+                                children: [
+                                  CircleAvatar(
+                                    radius: 12,
+                                    backgroundColor: Colors.brown[400],
+                                    child: Text(
+                                      image.userName[0].toUpperCase() ?? "?",
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 12,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(width: 6),
+                                  Text(image.userName ?? "unknown"),
+                                ],
                               ),
-                              InfoBox(
-                                icon: Icons.favorite,
-                                label: '${image.likes}',
+                              LikeButton(
+                                isLiked: image.isLiked,
+                                likeCount: image.likes,
                                 onTap: () {
                                   Provider.of<FeedProvider>(context, listen: false)
                                       .toggleLike(image);
@@ -106,13 +120,6 @@ class _FeedMainState extends State<FeedMain> {
                                 },
                               ),
                             ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            "Uploaded: ${image.uploadedAt}",
-                            style: const TextStyle(fontSize: 12, color: Colors.grey),
                           ),
                         ),
                       ],
@@ -140,14 +147,66 @@ class _FeedMainState extends State<FeedMain> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text('Comments for ${image.fileName}',
-                  style: const TextStyle(fontWeight: FontWeight.bold)),
+              const Text('Comments',
+                  style: TextStyle(fontWeight: FontWeight.bold)),
               const SizedBox(height: 10),
-              ...image.comments.map((comment) => ListTile(title: Text(comment.content))),
+              ...image.comments.map((comment) => _buildCommentCard(comment)),
             ],
           ),
         );
       },
+    );
+  }
+
+  Widget _buildCommentCard(Comment comment) {
+    final String initial = comment.userName.isNotEmpty
+        ? comment.userName[0].toUpperCase()
+        : '?';
+
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 6),
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: const Color(0xFFFFFDE7),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          CircleAvatar(
+            radius: 24,
+            backgroundColor: Colors.brown[400],
+            child: Text(
+              initial,
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 24,
+                color: Colors.white,
+              ),
+            ),
+          ),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  comment.userName,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  comment.content,
+                  style: const TextStyle(fontSize: 14),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
