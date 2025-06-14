@@ -10,7 +10,6 @@ import '../../providers/feed_provider.dart';
 import '../../widgets/info_box.dart';
 
 class FeedMain extends StatefulWidget {
-
   const FeedMain({
     super.key,
   });
@@ -29,7 +28,8 @@ class _FeedMainState extends State<FeedMain> {
     _scrollController.addListener(() {
       final provider = Provider.of<FeedProvider>(context, listen: false);
 
-      if (_scrollController.position.pixels >= _scrollController.position.maxScrollExtent - 200 &&
+      if (_scrollController.position.pixels >=
+              _scrollController.position.maxScrollExtent - 200 &&
           provider.hasMore &&
           !provider.isLoading) {
         provider.fetchImages();
@@ -69,52 +69,109 @@ class _FeedMainState extends State<FeedMain> {
                   final image = images[index];
                   return Card(
                     margin: const EdgeInsets.all(10),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    elevation: 6,
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        CachedNetworkImage(
-                          imageUrl: '${ApiService.baseUrl}/images/file/${image.fileName}',
-                          placeholder: (context, url) => const CircularProgressIndicator(),
-                          errorWidget: (context, url, error) => const Icon(Icons.error),
-                          fit: BoxFit.fitWidth,
-                          width: MediaQuery.of(context).size.width * 0.8,
+                        ClipRRect(
+                          borderRadius: const BorderRadius.vertical(
+                              top: Radius.circular(20)),
+                          child: CachedNetworkImage(
+                            imageUrl:
+                                '${ApiService.baseUrl}/images/file/${image.fileName}',
+                            placeholder: (context, url) => const SizedBox(
+                              height: 200,
+                              child: Center(child: CircularProgressIndicator()),
+                            ),
+                            errorWidget: (context, url, error) =>
+                                const Icon(Icons.error),
+                            fit: BoxFit.cover,
+                            width: double.infinity,
+                            height: 220,
+                          ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 6.0),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 10.0, horizontal: 16),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
+                              // User info
                               Row(
                                 children: [
                                   CircleAvatar(
-                                    radius: 12,
+                                    radius: 16,
                                     backgroundColor: Colors.brown[400],
                                     child: Text(
-                                      image.userName[0].toUpperCase() ?? "?",
+                                      image.userName.isNotEmpty
+                                          ? image.userName[0].toUpperCase()
+                                          : "?",
                                       style: const TextStyle(
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 12,
+                                        fontSize: 14,
                                         color: Colors.white,
                                       ),
                                     ),
                                   ),
-                                  const SizedBox(width: 6),
-                                  Text(image.userName ?? "unknown"),
+                                  const SizedBox(width: 8),
+                                  Text(
+                                    image.userName ?? "unknown",
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 15,
+                                    ),
+                                  ),
                                 ],
                               ),
-                              LikeButton(
-                                isLiked: image.isLiked,
-                                likeCount: image.likes,
-                                onTap: () {
-                                  Provider.of<FeedProvider>(context, listen: false)
-                                      .toggleLike(image);
-                                },
-                              ),
-                              InfoBox(
-                                icon: Icons.comment,
-                                label: '${image.comments.length}',
-                                onTap: () {
-                                  _showCommentsDialog(context, image);
-                                },
+                              // Like, timer, comments
+                              Row(
+                                children: [
+                                  LikeButton(
+                                    isLiked: image.isLiked,
+                                    likeCount: image.likes,
+                                    onTap: () {
+                                      Provider.of<FeedProvider>(context,
+                                              listen: false)
+                                          .toggleLike(image);
+                                    },
+                                  ),
+                                  // Statyczny licznik czasu
+                                  Container(
+                                    margin: const EdgeInsets.symmetric(
+                                        horizontal: 8),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 8, vertical: 4),
+                                    decoration: BoxDecoration(
+                                      color: Colors.brown[50],
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        const Icon(Icons.timer,
+                                            size: 18, color: Color(0xFF926C20)),
+                                        const SizedBox(width: 4),
+                                        Text(
+                                          "23:59:59", // statyczny licznik czasu
+                                          style: const TextStyle(
+                                            fontWeight: FontWeight.w500,
+                                            color: Color(0xFF926C20),
+                                            fontSize: 13,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  InfoBox(
+                                    icon: Icons.comment,
+                                    label: '${image.comments.length}',
+                                    onTap: () {
+                                      _showCommentsDialog(context, image);
+                                    },
+                                  ),
+                                ],
                               ),
                             ],
                           ),
@@ -156,9 +213,8 @@ class _FeedMainState extends State<FeedMain> {
   }
 
   Widget _buildCommentCard(Comment comment) {
-    final String initial = comment.userName.isNotEmpty
-        ? comment.userName[0].toUpperCase()
-        : '?';
+    final String initial =
+        comment.userName.isNotEmpty ? comment.userName[0].toUpperCase() : '?';
 
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 6),
