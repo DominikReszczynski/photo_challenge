@@ -2,6 +2,7 @@ import 'package:cas_house/api_service.dart';
 import 'package:cas_house/main_global.dart';
 import 'package:cas_house/providers/image_provider.dart';
 import 'package:cas_house/widgets/animated_background.dart';
+import 'package:cas_house/widgets/like_button.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:provider/provider.dart';
@@ -90,9 +91,9 @@ class _FeedMainState extends State<FeedMain> {
                                 label: image.userName ?? "unknown",
                                 onTap: null,
                               ),
-                              InfoBox(
-                                icon: Icons.favorite,
-                                label: '${image.likes}',
+                              LikeButton(
+                                isLiked: image.isLiked,
+                                likeCount: image.likes,
                                 onTap: () {
                                   Provider.of<FeedProvider>(context, listen: false)
                                       .toggleLike(image);
