@@ -108,13 +108,6 @@ class _FeedMainState extends State<FeedMain> {
                             ],
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            "Uploaded: ${image.uploadedAt}",
-                            style: const TextStyle(fontSize: 12, color: Colors.grey),
-                          ),
-                        ),
                       ],
                     ),
                   );
