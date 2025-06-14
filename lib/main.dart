@@ -9,6 +9,7 @@ import 'package:cas_house/providers/user_provider.dart';
 import 'package:cas_house/sections/feed/feed_main.dart';
 import 'package:cas_house/sections/dashboard/dashboard_main.dart';
 import 'package:cas_house/sections/login.dart';
+import 'package:cas_house/sections/splash.dart';
 import 'package:cas_house/sections/user/user_main.dart';
 import 'package:cas_house/services/image_services.dart';
 import 'package:provider/provider.dart';

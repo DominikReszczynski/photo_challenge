@@ -3,6 +3,7 @@ import 'package:cas_house/main_global.dart';
 import 'package:cas_house/models/challenge.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'dart:io';
 import 'package:http/http.dart' as http;
 
