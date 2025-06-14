@@ -86,10 +86,23 @@ class _FeedMainState extends State<FeedMain> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              InfoBox(
-                                icon: Icons.person,
-                                label: image.userName ?? "unknown",
-                                onTap: null,
+                              Row(
+                                children: [
+                                  CircleAvatar(
+                                    radius: 12,
+                                    backgroundColor: Colors.brown[400],
+                                    child: Text(
+                                      image.userName[0].toUpperCase() ?? "?",
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 12,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(width: 6),
+                                  Text(image.userName ?? "unknown"),
+                                ],
                               ),
                               LikeButton(
                                 isLiked: image.isLiked,
