@@ -1,9 +1,7 @@
 import 'dart:io';
 
-import 'package:cas_house/api_service.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart' as img_picker;
-import 'package:http/http.dart' as http;
 
 class SingleImageUploader extends StatefulWidget {
   final void Function(File) onImageSelected;
@@ -53,7 +51,7 @@ class _SingleImageUploaderState extends State<SingleImageUploader> {
                 onPressed: _pickImage,
                 child: const Text("Dodaj zdjęcie"),
               )
-            : SizedBox(),
+            : const SizedBox(),
         if (_selectedImage != null)
           Padding(
             padding: const EdgeInsets.all(8.0),

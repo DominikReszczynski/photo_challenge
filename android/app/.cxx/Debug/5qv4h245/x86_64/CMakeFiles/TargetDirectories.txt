@@ -1,0 +1,2 @@
+C:/Development/Projects/photo_challenge/android/app/.cxx/Debug/5qv4h245/x86_64/CMakeFiles/edit_cache.dir
+C:/Development/Projects/photo_challenge/android/app/.cxx/Debug/5qv4h245/x86_64/CMakeFiles/rebuild_cache.dir

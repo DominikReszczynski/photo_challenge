@@ -18,7 +18,7 @@ class LikeButton extends StatefulWidget {
 
 class _LikeInfoBoxState extends State<LikeButton>
     with SingleTickerProviderStateMixin {
-  bool _wasLiked = false;
+  final bool _wasLiked = false;
 
   @override
   void initState() {

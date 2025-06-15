@@ -1,6 +1,7 @@
 import 'package:cas_house/api_service.dart';
-import 'package:cas_house/main_global.dart';
+
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -10,9 +11,9 @@ class ChallengePickerButton extends StatefulWidget {
   final Function(Challenge) onChallengeSelected;
 
   const ChallengePickerButton({
-    Key? key,
+    super.key,
     required this.onChallengeSelected,
-  }) : super(key: key);
+  });
 
   @override
   State<ChallengePickerButton> createState() => _ChallengePickerButtonState();
@@ -199,9 +200,39 @@ class _ChallengePickerButtonState extends State<ChallengePickerButton> {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: _openChallengePicker,
-      child: const Text('Wybierz wyzwanie'),
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 4),
+      decoration: BoxDecoration(
+        color: Colors.white.withValues(alpha: 0.85),
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: const [
+          BoxShadow(
+            color: Colors.black12,
+            blurRadius: 8,
+            offset: Offset(0, 4),
+          ),
+        ],
+      ),
+      child: ElevatedButton.icon(
+        onPressed: _openChallengePicker,
+        icon: const Icon(
+          Icons.flag,
+          color: Colors.white,
+        ),
+        label: Text(
+          'Wybierz wyzwanie',
+          style: GoogleFonts.montserrat(
+              fontWeight: FontWeight.w500, color: Colors.white),
+        ),
+        style: ElevatedButton.styleFrom(
+          minimumSize: const Size(double.infinity, 48),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          backgroundColor: const Color(0xFF926C20),
+          elevation: 2,
+        ),
+      ),
     );
   }
 }

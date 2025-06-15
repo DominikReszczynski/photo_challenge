@@ -24,13 +24,22 @@ class _UserSectionMainState extends State<UserSectionMain> {
                 userProvider.logout();
                 Navigator.of(context).pushAndRemoveUntil(
                   MaterialPageRoute(builder: (_) => const LoginScreen()),
-                      (route) => false,
+                  (route) => false,
                 );
               },
             ),
             const Padding(
               padding: EdgeInsets.all(8.0),
-              child: Text("Users photos"),
+              child: Text(
+                "📸 Galeria Twoich zdjęć",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF926C20),
+                  letterSpacing: 0.5,
+                ),
+                textAlign: TextAlign.center,
+              ),
             ),
             const Expanded(child: UserImagesMain())
           ],

@@ -1,12 +1,7 @@
-import 'dart:io';
 
-import 'package:auto_size_text/auto_size_text.dart';
-import 'package:cas_house/sections/dashboard/challenge_picker_widget.dart';
 import 'package:cas_house/widgets/animated_background.dart';
 import 'package:flutter/material.dart';
 import 'package:cas_house/providers/dasboard_provider.dart';
-import 'package:cas_house/sections/dashboard/image_picker.dart';
-import 'package:cas_house/sections/dashboard/images_list.dart';
 import 'package:cas_house/sections/dashboard/multi_image_picker.dart';
 
 class HomeSectionMain extends StatefulWidget {

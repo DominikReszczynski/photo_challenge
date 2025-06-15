@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class ApiService {
-  static const String baseUrl = 'http://192.168.100.82:3000';
+  static const String baseUrl = 'http://192.168.100.17:3000';
 // 'http://localhost:3000';
   Future<String> fetchGreeting() async {
     final response = await http.get(Uri.parse('$baseUrl/hello'));
